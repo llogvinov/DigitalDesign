@@ -25,9 +25,38 @@ namespace DigitalDesignTask2
              * количество раз, которое они встретились в тексте */
             Dictionary<string, int> uniqueWordsDict = new Dictionary<string, int>();
 
+            /* Считываем текст из файла */
+            ReadText(readPath, notWords, ref uniqueWordsDict);
+
+            /* Выводим все найденые слова и количесто раз, 
+             * которое они встречаются в тексте */
+            PrintDictionary(writePath, uniqueWordsDict);
+            Console.ReadLine();
+        }
+
+        /* Метод, перебирающий слова.
+         * Если слово не входит в словарь, добавляем его туда, 
+         * значение ставим = 1. Если слово входит в словарь, 
+         * увеличиваем зничение (количество повторений слова) на 1
+         * Перед проверкой и занесением в словарь всегда 
+         * приводим слово к нижнему регистру*/
+        static void AddWordToDict(ref Dictionary<string, int> UniqueWordsDict, string[] Words)
+        {
+            foreach (string word in Words)
+            {
+                if (!UniqueWordsDict.Keys.Contains(word.ToLower()))
+                    UniqueWordsDict.Add(word.ToLower(), 1);
+                else
+                    UniqueWordsDict[word.ToLower()] += 1;
+            }
+        }
+
+        /* Метод считывания текста */
+        static void ReadText(string ReadPath, char[] notWords, ref Dictionary<string, int> UniqueWordsDict)
+        {
             try
             {
-                using (StreamReader sr = new StreamReader(readPath))
+                using (StreamReader sr = new StreamReader(ReadPath))
                 {
                     string line;
                     while ((line = sr.ReadLine()) != null)
@@ -36,18 +65,7 @@ namespace DigitalDesignTask2
                          * скобки и знаки препинания, а так же числа */
                         string[] words = line.Split(notWords, StringSplitOptions.RemoveEmptyEntries);
 
-                        /* Если слово не входит в словарь, добавляем его туда, 
-                         * значение ставим = 1. Если слово входит в словарь, 
-                         * увеличиваем зничение (количество повторений слова) на 1
-                         * Перед проверкой и занесением в словарь всегда 
-                         * приводим слово к нижнему регистру */
-                        foreach (string word in words)
-                        {
-                            if (!uniqueWordsDict.Keys.Contains(word.ToLower()))
-                                uniqueWordsDict.Add(word.ToLower(), 1);
-                            else
-                                uniqueWordsDict[word.ToLower()] += 1;
-                        }
+                        AddWordToDict(ref UniqueWordsDict, words);
                     }
                 }
             }
@@ -55,15 +73,10 @@ namespace DigitalDesignTask2
             {
                 Console.WriteLine(exeption);
             }
-
-            /* Выводим все найденые слова и количесто раз, 
-             * которое они встречаются в тексте */
-            PrintWords(uniqueWordsDict, writePath);
-            Console.ReadLine();
         }
 
         /* Метод вывода словаря */
-        static void PrintWords(Dictionary<string, int> UniqueWordsDict, string WritePath)
+        static void PrintDictionary(string WritePath, Dictionary<string, int> UniqueWordsDict)
         {
             try
             {
@@ -71,7 +84,7 @@ namespace DigitalDesignTask2
                 {
                     foreach (KeyValuePair<string, int> keyValuePair in UniqueWordsDict.OrderByDescending(keyValuePair => keyValuePair.Value))
                     {
-                        sw.WriteLine("{0,24}   |{1,5}", keyValuePair.Key, keyValuePair.Value);                   
+                        sw.WriteLine("{0,5}| {1}", keyValuePair.Value, keyValuePair.Key);                   
                     }
                 }
                 Console.WriteLine("Запись выполнена");
