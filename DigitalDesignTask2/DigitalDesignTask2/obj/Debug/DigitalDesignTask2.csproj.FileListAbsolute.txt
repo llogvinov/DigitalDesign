@@ -1,7 +1,0 @@
-C:\Users\llogv\OneDrive\Рабочий стол\прога\DigitalDesignTask2\DigitalDesignTask2\bin\Debug\DigitalDesignTask2.exe.config
-C:\Users\llogv\OneDrive\Рабочий стол\прога\DigitalDesignTask2\DigitalDesignTask2\bin\Debug\DigitalDesignTask2.exe
-C:\Users\llogv\OneDrive\Рабочий стол\прога\DigitalDesignTask2\DigitalDesignTask2\bin\Debug\DigitalDesignTask2.pdb
-C:\Users\llogv\OneDrive\Рабочий стол\прога\DigitalDesignTask2\DigitalDesignTask2\obj\Debug\DigitalDesignTask2.csprojAssemblyReference.cache
-C:\Users\llogv\OneDrive\Рабочий стол\прога\DigitalDesignTask2\DigitalDesignTask2\obj\Debug\DigitalDesignTask2.csproj.CoreCompileInputs.cache
-C:\Users\llogv\OneDrive\Рабочий стол\прога\DigitalDesignTask2\DigitalDesignTask2\obj\Debug\DigitalDesignTask2.exe
-C:\Users\llogv\OneDrive\Рабочий стол\прога\DigitalDesignTask2\DigitalDesignTask2\obj\Debug\DigitalDesignTask2.pdb
